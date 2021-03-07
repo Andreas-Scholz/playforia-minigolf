@@ -1,4 +1,4 @@
-# Minigolf Server/Client/Editor (Playforia) ![Test Build](https://github.com/PhilippvK/playforia-minigolf/workflows/Test%20build/badge.svg)
+# Minigolf Server/Client/Editor (Playforia) [![Test Build](https://github.com/PhilippvK/playforia-minigolf/workflows/Test%20build/badge.svg)](https://github.com/PhilippvK/playforia-minigolf/actions?query=workflow%3A%22Test+build%22) [![quay.io/philippvk/minigolf](https://quay.io/repository/philippvk/minigolf/status)](https://quay.io/repository/philippvk/minigolf)
 
 ## WARNING
 
@@ -59,9 +59,11 @@ The client can be started the same way (AFTER THE SERVER WAS STARTED) but you ca
 java -jar client.jar -server 192.168.1.7 -lang en_US # Replace IP with the one of your server (which you can find out by using for example `ifconfig`/`ipconfig`) and lang with en_US, fi_FI or sv_SE
 ```
 
-After the Login screen, which can be skipped with an empty form, you should see your familiar Playforia Minigolf Menu!
-
 **NEW:** You can now choose your nickname freely. Please avoid using hate speech,...
+
+#### Running Minigolf Server in Docker Container
+
+We provide an experimental Dockerfile for easy hosting of the server application. You can either build the image by yourself or download the pre-build images from [quay.io](https://quay.io/repository/philippvk/minigolf) via `docker pull quay.io/philippvk/minigolf:latest`.
 
 Running the Editor is quite straightforward as it can be started like expected: `java -jar editor.jar`
 ### CLI options
@@ -75,7 +77,6 @@ Tested:
 - MacOS 10.14.5 Mojave with Java Version `1.8.0_152-ea` with (Open)JDK
 - Ubuntu 19.04 with Java version `1.8.0_265`
 - Windows (7/8/10)
-
 
 ## Problems
 - Ratings are not synced
@@ -91,12 +92,24 @@ Tested:
 4. The Java code you will find in the repository is pretty bad. Some parts even look like they where generated, for example by an converter tool
 5. There is actually an aimbot implemented in the client code. Look for `allowCheating` in `GameCanvas.java` for trying it out. Use it wisely.
 
-## Contributors
+## Contribution
+
+### Contributors
 
 - [@PhilippvK](https://github.com/PhilippvK) (BuyMeACoffe: https://www.buymeacoff.ee/PhilippvK)
 - [@maitovelkkis](https://github.com/maitovelkkis)
 - [@eYeWoRRy](https://github.com/eYeWoRRy)
 - [@pehala](https://github.com/pehala)
+
+### How to create a new Release?
+
+1. Ensure that `git status` on `master` branch is clean and `mvn install` runs fine
+2. Update version via Maven: f.e. `mvn versions:set -DnewVersion=2.1.1.0-BETA`
+3. Create tag: f.e. `git tag v2.1.1.0-BETA`
+4. Push master branch and tag: f.e. `git push origin master v2.1.1.0-BETA`
+5. Wait 5-10 minutes until GitHub release workflow is done (See: https://github.com/PhilippvK/playforia-minigolf/actions)
+6. There should be a new Draft for a Release on https://github.com/PhilippvK/playforia-minigolf/releases
+7. Edit Release text and publish!
 
 ---
 
